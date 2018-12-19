@@ -158,6 +158,7 @@ do_prepare()
     find_file "/usr/local/share/aclocal /usr/local/share/aclocal${ac_ver} 
                /usr/local/share/aclocal${ac_ver2}
                /opt/local/share/aclocal
+               /usr/pkg/share/aclocal
                /usr/share/aclocal /usr/share/aclocal${ac_ver} 
                /usr/share/aclocal${ac_ver2}" \
 	"libtool.m4 libtool${lt_ver}.m4 libtool${lt_ver2}.m4 

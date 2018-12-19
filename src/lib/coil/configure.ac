@@ -157,6 +157,9 @@ case $system in
 [QNX*)]
 	AC_DEFINE([COIL_OS_QNX], [TRUE], [OS is QNX])
 	AC_DEFINE([COIL_PLATFORM], [POSIX], [Platform is POSIX])
+	CPPFLAGS="-I/usr/local/include $CPPFLAGS"
+	CXXFLAGS="-I/usr/local/include $CXXFLAGS"
+	LDFLAGS="-L/usr/qnx650/target/qnx6/x86/lib/gcc/4.4.2/ -L/usr/qnx650/target/qnx6/x86/lib/ -luuid"
 	COIL_PLATFORM=posix
 	;;	
 [CYGWIN*)]
