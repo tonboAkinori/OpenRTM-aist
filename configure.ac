@@ -232,7 +232,7 @@ case $system in
 	;;	
 [QNX*)]
 	AC_DEFINE([RTM_OS_QNX], [TRUE], [OS is QNX])
-	LDFLAGS="-L/usr/qnx650/target/qnx6/x86/lib/gcc/4.4.2/ -L/usr/qnx650/target/qnx6/x86/lib/ -luuid"
+	LDFLAGS="-L/usr/local/lib/ -L/usr/qnx650/target/qnx6/x86/lib/gcc/4.4.2/ -L/usr/qnx650/target/qnx6/x86/lib/ -luuid"
 	os="qnx"
 	;;	
 [CYGWIN*)]
