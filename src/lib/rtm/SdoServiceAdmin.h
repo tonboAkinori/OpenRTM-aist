@@ -185,6 +185,17 @@ namespace RTC
      * @endif
      */
     virtual ~SdoServiceAdmin();
+
+    /*!
+     * @if jp
+     * @brief 初期化処理
+     *
+     * @else
+     * @brief Initialization
+     *
+     * @endif
+     */
+    virtual void init(coil::Properties& prop);
     
     /*!
      * @if jp
@@ -303,6 +314,26 @@ namespace RTC
     bool removeSdoServiceConsumer(const char* id);
     
 protected:
+    /*!
+     * @if jp
+     * @brief Provider 初期化処理
+     *
+     * @else
+     * @brief Provider Initialization
+     *
+     * @endif
+     */
+    void initProvider(coil::Properties& prop);
+    /*!
+     * @if jp
+     * @brief Consumer 初期化処理
+     *
+     * @else
+     * @brief Consumer Initialization
+     *
+     * @endif
+     */
+    void initConsumer(coil::Properties& prop);
     /*!
      * @if jp
      *

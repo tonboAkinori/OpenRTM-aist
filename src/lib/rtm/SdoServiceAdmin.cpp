@@ -57,92 +57,13 @@ namespace RTC
    * @endif
    */
   SdoServiceAdmin::SdoServiceAdmin(::RTC::RTObject_impl& rtobj)
-    : m_rtobj(rtobj), m_allConsumerEnabled(true),
+    : m_rtobj(rtobj), m_allConsumerEnabled(false),
       rtclog("SdoServiceAdmin")
   {
     RTC_TRACE(("SdoServiceAdmin::SdoServiceAdmin(%s)",
                rtobj.getProperties()["instance_name"].c_str()));
 
     ::coil::Properties& prop(m_rtobj.getProperties());
-
-    //------------------------------------------------------------
-    // SDO service provider
-   ::coil::vstring enabledProviderTypes 
-      = ::coil::split(prop["sdo.service.provider.enabled_services"], ",", true);
-    RTC_DEBUG(("sdo.service.provider.enabled_services: %s",
-               prop["sdo.service.provider.enabled_services"].c_str()));
-
-    ::coil::vstring availableProviderTypes 
-      = SdoServiceProviderFactory::instance().getIdentifiers();
-    prop["sdo.service.provider.available_services"]
-      = coil::flatten(availableProviderTypes);
-    RTC_DEBUG(("sdo.service.provider.available_services: %s",
-               prop["sdo.service.provider.available_services"].c_str()));
-
-    
-    // If types include '[Aa][Ll][Ll]', all types enabled in this RTC
-    ::coil::vstring activeProviderTypes;
-    for (size_t i(0); i < enabledProviderTypes.size(); ++i)
-      {
-        std::string tmp(enabledProviderTypes[i]);
-        coil::toLower(tmp);
-        if (tmp == "all")
-          {
-            activeProviderTypes = availableProviderTypes;
-            RTC_DEBUG(("sdo.service.provider.enabled_services: ALL"));
-            break;
-          }
-        for (size_t j(0); j < availableProviderTypes.size(); ++j)
-          {
-            if (availableProviderTypes[j] == enabledProviderTypes[i])
-              {
-                activeProviderTypes.push_back(availableProviderTypes[j]);
-              }
-          }
-      }
-
-    SdoServiceProviderFactory& factory(SdoServiceProviderFactory::instance());
-    for (size_t i(0); i < activeProviderTypes.size(); ++i)
-      {
-        SdoServiceProviderBase* svc
-          = factory.createObject(activeProviderTypes[i]);
-        
-        SDOPackage::ServiceProfile prof;
-        prof.id             = CORBA::string_dup(activeProviderTypes[i].c_str());
-        prof.interface_type = CORBA::string_dup(activeProviderTypes[i].c_str());
-        prof.service        = svc->_this();
-        std::string propkey = ifrToKey(activeProviderTypes[i]);
-        NVUtil::copyFromProperties(prof.properties,
-                                   prop.getNode(propkey.c_str()));
-
-        svc->init(rtobj, prof);
-        m_providers.push_back(svc);
-      }
-
-    //------------------------------------------------------------
-    // SDO service consumer
-    // getting consumer types from RTC's properties
-
-    ::std::string constypes = prop["sdo.service.consumer.enabled_services"];
-    m_consumerTypes = ::coil::split(constypes, ",", true);
-    RTC_DEBUG(("sdo.service.consumer.enabled_services: %s", constypes.c_str()));
-
-    prop["sdo.service.consumer.available_services"]
-      = coil::flatten(SdoServiceConsumerFactory::instance().getIdentifiers());
-    RTC_DEBUG(("sdo.service.consumer.available_services: %s",
-               prop["sdo.service.consumer.available_services"].c_str()));
-
-    // If types include '[Aa][Ll][Ll]', all types enabled in this RTC
-    for (size_t i(0); i < m_consumerTypes.size(); ++i)
-      {
-        std::string tmp(m_consumerTypes[i]);
-        coil::toLower(tmp);
-        if (tmp == "all")
-          {
-            m_allConsumerEnabled = true;
-            RTC_DEBUG(("sdo.service.consumer.enabled_services: ALL"));
-          }
-      }
   }
 
   /*!
@@ -167,6 +88,105 @@ namespace RTC
         delete m_consumers[i];
       }
     m_consumers.clear();
+  }
+
+  void SdoServiceAdmin::init(coil::Properties& prop)
+  {
+    initProvider(prop);
+    initConsumer(prop);
+  }
+
+  void SdoServiceAdmin::initProvider(coil::Properties& prop)
+  {
+    //------------------------------------------------------------
+    // SDO service provider
+    ::coil::vstring enabledProviderTypes
+      = ::coil::split(prop["sdo.service.provider.enabled_services"], ",", true);
+    RTC_DEBUG(("sdo.service.provider.enabled_services: %s",
+               prop["sdo.service.provider.enabled_services"].c_str()));
+
+    ::coil::vstring availableProviderTypes
+        = SdoServiceProviderFactory::instance().getIdentifiers();
+    coil::Properties tmp;
+    tmp["sdo.service.provider.available_services"]
+      = coil::flatten(availableProviderTypes);
+    m_rtobj.setProperties(tmp);
+    RTC_DEBUG(("sdo.service.provider.available_services: %s",
+               tmp["sdo.service.provider.available_services"].c_str()));
+
+    // If types include '[Aa][Ll][Ll]', all types enabled in this RTC
+    ::coil::vstring activeProviderTypes;
+    for (size_t i(0); i < enabledProviderTypes.size(); ++i)
+      {
+        std::string tmp(enabledProviderTypes[i]);
+        coil::toLower(tmp);
+        if (tmp == "all")
+          {
+            activeProviderTypes = availableProviderTypes;
+            RTC_DEBUG(("sdo.service.provider.enabled_services: ALL"));
+            break;
+          }
+        for (size_t j(0); j < availableProviderTypes.size(); ++j)
+          {
+            if (availableProviderTypes[j] == enabledProviderTypes[i])
+              {
+                activeProviderTypes.push_back(availableProviderTypes[j]);
+              }
+          }
+      }
+      
+    SdoServiceProviderFactory& factory(SdoServiceProviderFactory::instance());
+    for (size_t i(0); i < activeProviderTypes.size(); ++i)
+      {
+        SdoServiceProviderBase* svc
+          = factory.createObject(activeProviderTypes[i]);
+        
+        SDOPackage::ServiceProfile prof;
+        prof.id             = CORBA::string_dup(activeProviderTypes[i].c_str());
+        prof.interface_type = CORBA::string_dup(activeProviderTypes[i].c_str());
+        prof.service        = svc->_this();
+        std::string propkey = ifrToKey(activeProviderTypes[i]);
+        NVUtil::copyFromProperties(prof.properties,
+                                   prop.getNode(propkey.c_str()));
+
+        if (!svc->init(m_rtobj, prof))
+          {
+            svc->finalize();
+            delete svc;
+            continue;
+          }
+        m_providers.push_back(svc);
+      }
+  }
+
+  void SdoServiceAdmin::initConsumer(coil::Properties& prop)
+  {
+    //------------------------------------------------------------
+    // SDO service consumer
+    // getting consumer types from RTC's properties
+
+    ::std::string constypes = prop["sdo.service.consumer.enabled_services"];
+    m_consumerTypes = ::coil::split(constypes, ",", true);
+    RTC_DEBUG(("sdo.service.consumer.enabled_services: %s", constypes.c_str()));
+
+    coil::Properties tmp;
+    tmp["sdo.service.consumer.available_services"]
+      = coil::flatten(SdoServiceConsumerFactory::instance().getIdentifiers());
+    m_rtobj.setProperties(tmp);
+    RTC_DEBUG(("sdo.service.consumer.available_services: %s",
+               prop["sdo.service.consumer.available_services"].c_str()));
+
+    // If types include '[Aa][Ll][Ll]', all types enabled in this RTC
+    for (size_t i(0); i < m_consumerTypes.size(); ++i)
+      {
+        std::string tmp(m_consumerTypes[i]);
+        coil::toLower(tmp);
+        if (tmp == "all")
+          {
+            m_allConsumerEnabled = true;
+            RTC_DEBUG(("sdo.service.consumer.enabled_services: ALL"));
+          }
+      }
   }
   
   /*!
