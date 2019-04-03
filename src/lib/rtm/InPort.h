@@ -250,7 +250,7 @@ namespace RTC
             return true;
           }
       }
-      int r(0);
+      size_t r(0);
       {
         Guard guard(m_connectorsMutex);
         if (m_connectors.size() == 0)
@@ -298,7 +298,7 @@ namespace RTC
     {
       RTC_TRACE(("isEmpty()"));
       if (m_directNewData == true) { return false; }
-      int r(0);
+      size_t r(0);
 
       {
         Guard guard(m_connectorsMutex);
