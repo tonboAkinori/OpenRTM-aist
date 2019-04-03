@@ -37,6 +37,9 @@
 #include <stdlib.h>
 #include <winbase.h>
 
+#pragma warning(push)
+#pragma warning(disable:4996)
+
 extern "C"
 {
   extern char *optarg;
@@ -458,5 +461,7 @@ namespace coil
   };
     
 };
+
+#pragma warning(pop)
 
 #endif // COIL_OS_H

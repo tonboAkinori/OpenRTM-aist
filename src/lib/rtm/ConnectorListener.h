@@ -1051,7 +1051,7 @@ namespace RTC
     {
       Guard guard(m_mutex);
       ReturnCode ret(NO_CHANGE);
-      for (int i(0), len(m_listeners.size()); i < len; ++i)
+      for (size_t i(0), len(m_listeners.size()); i < len; ++i)
         {
           ConnectorDataListenerT<DataType>* listener(0);
           listener =
