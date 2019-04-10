@@ -71,7 +71,7 @@ namespace RTC
       m_properties(default_conf), m_configsets(m_properties.getNode("conf")),
       m_sdoservice(*this),
       m_readAll(false),m_writeAll(false),
-      m_readAllCompletion(false),m_writeAllCompletion(false)
+      m_readAllCompletion(false),m_writeAllCompletion(false), m_sdoconterm(NULL)
   {
     m_objref = this->_this();
     m_pSdoConfigImpl = new SDOPackage::Configuration_impl(m_configsets,
@@ -865,6 +865,7 @@ namespace RTC
       {
         m_sdoconterm->wait();
         delete m_sdoconterm;
+        m_sdoconterm = NULL;
       }
     return ret;
   }
@@ -2014,8 +2015,7 @@ namespace RTC
 
   /*!
   * @if jp
-  * @brief [local interface] SDO service provider を別スレッドで削除する
-  * @else
+  * @brief [local interface] SDO service provider 䂎�涎�䂹㎲K䃎���(䁧厵)Ꙥ㎱8䂎�)  * @else
   * @brief [local interface] Remove a SDO service provider
   * @endif
   */
@@ -2025,6 +2025,7 @@ namespace RTC
       {
         m_sdoconterm->wait();
         delete m_sdoconterm;
+        m_sdoconterm = NULL;
       }
     m_sdoconterm = new SdoServiceConsumerTerminator();
     m_sdoconterm->setSdoServiceConsumer(&m_sdoservice, id);
