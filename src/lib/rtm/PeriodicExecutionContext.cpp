@@ -601,7 +601,6 @@ namespace RTC_exp
   void PeriodicExecutionContext::setCpuAffinity(coil::Properties& props)
   {
     RTC_TRACE(("setCpuAffinity()"));
-    std::cout << props;
     std::string affinity;
     getProperty(props, "cpu_affinity", affinity);
     RTC_DEBUG(("CPU affinity property: %s", affinity.c_str()));
