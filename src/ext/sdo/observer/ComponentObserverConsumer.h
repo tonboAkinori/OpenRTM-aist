@@ -343,6 +343,7 @@ namespace RTC
       }
       void onFinalize(UniqueId ec_id, ReturnCode_t ret)
       {
+        m_coc.unsetHeartbeat();
         onGeneric("FINALIZE:", ec_id, ret);
       }
 
