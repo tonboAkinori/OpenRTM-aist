@@ -45,7 +45,6 @@ namespace RTC
 
     for (size_t i(0); i < files.size(); ++i)
       {
-        std::cout << "#### file: " << files[i] << std::endl;
         if (std::count(s_files.begin(), s_files.end(), files[i]) > 0) { continue; }
         m_fileName = files[i];
         s_files.push_back(files[i]);
@@ -54,19 +53,20 @@ namespace RTC
         coil::normalize(fname);
         if (fname == "stdout")
           {
+            std::cout << "#### file: " << files[i] << std::endl;
             std::cout << "##### STDOUT!! #####" << std::endl;
             m_stdout = std::cout.rdbuf();
             return true;
           }
         else if (fname == "stderr")
           {
+            std::cout << "#### file: " << files[i] << std::endl;
             std::cout << "##### STDOUT!! #####" << std::endl;
             m_stdout = std::cerr.rdbuf();
             return true;
           }
         else
           {
-            std::cout << "##### file #####" << std::endl;
             m_fileout = new std::filebuf();
             m_fileout->open(files[i].c_str(), std::ios::out | std::ios::app);
             if (m_fileout->is_open()) { return true; }
