@@ -511,3 +511,8 @@ namespace RTC
 
 
 }; // end of namepsace RTC
+
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTC::SdoServiceConsumerBase> >;
+template class coil::Singleton<coil::GlobalFactory<RTC::SdoServiceProviderBase> >;
+#endif

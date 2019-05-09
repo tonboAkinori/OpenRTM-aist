@@ -102,4 +102,9 @@ namespace RTC
   EXTERN template class DLL_PLUGIN coil::GlobalFactory<LogstreamBase>;
 #endif
 };
+
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::LogstreamBase> >;
+#endif
+
 #endif // RTC_LOGSTREAMBASE_H

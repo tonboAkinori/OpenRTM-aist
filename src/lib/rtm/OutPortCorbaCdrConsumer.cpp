@@ -290,3 +290,8 @@ extern "C"
                                            ::RTC::OutPortCorbaCdrConsumer>);
   }
 };
+
+
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTC::OutPortConsumer> >;
+#endif

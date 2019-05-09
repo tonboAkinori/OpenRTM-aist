@@ -22,3 +22,6 @@
 
 
 
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTM::NumberingPolicyBase> >;
+#endif

@@ -103,3 +103,6 @@ extern "C"
   }
 };
 
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTC::LogstreamBase> >;
+#endif

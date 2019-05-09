@@ -898,3 +898,7 @@ namespace RTC
     return false;
   }
 };  // namespace RTC
+
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTC::ExecutionContextBase> >;
+#endif

@@ -551,4 +551,9 @@ namespace RTC
   EXTERN template class DLL_PLUGIN ::coil::GlobalFactory<OutPortProvider>;
 #endif
 }; // namespace RTC
+
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::OutPortProviderFactory> >;
+#endif
+
 #endif // RTC_OUTPORTPROVIDER_H

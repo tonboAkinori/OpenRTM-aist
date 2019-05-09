@@ -296,4 +296,8 @@ namespace RTM
 #endif
 }; // namespace RTM
 
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTM::LocalServiceBase> >;
+#endif
+
 #endif // RTM_LOCALSERVICEBASE_H

@@ -259,4 +259,8 @@ namespace RTC
 #endif
 };     // namespace RTC
 
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::InPortConsumer> >;
+#endif
+
 #endif // RTC_INPORTCONSUMER_H
