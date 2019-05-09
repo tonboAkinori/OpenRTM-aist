@@ -19,9 +19,3 @@
 
 #include <rtm/NumberingPolicy.h>
 #include <coil/stringutil.h>
-
-
-
-#ifdef __GNUC__
-template class coil::Singleton<coil::GlobalFactory<RTM::NumberingPolicyBase> >;
-#endif
