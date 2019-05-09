@@ -1212,4 +1212,8 @@ namespace RTC
 #pragma warning( default : 4290 )
 #endif
 
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::ExecutionContextBase> >;
+#endif
+
 #endif // RTC_EXECUTIONCONTEXTBASE_H

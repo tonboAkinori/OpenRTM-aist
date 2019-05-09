@@ -144,3 +144,7 @@ namespace RTC
     m_subscriptionType = subs_type;
   }
 }; // namespace RTC
+
+#ifdef __GNUC__
+template class coil::Singleton<coil::GlobalFactory<RTC::OutPortProviderFactory> >;
+#endif

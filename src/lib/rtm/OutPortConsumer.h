@@ -417,5 +417,10 @@ namespace RTC
   EXTERN template class DLL_PLUGIN ::coil::GlobalFactory<OutPortConsumer>;
 #endif
 };     // namespace RTC
+
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::OutPortConsumer> >;
+#endif
+
 #endif // RTC_OUTPORTCONSUMER_H
 

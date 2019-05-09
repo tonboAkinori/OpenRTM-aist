@@ -132,4 +132,9 @@ namespace RTM
 #endif
   
 };
+
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTM::NumberingPolicyBase> >;
+#endif
+
 #endif // RTC_NUMBERINGPOLICYBASE_H

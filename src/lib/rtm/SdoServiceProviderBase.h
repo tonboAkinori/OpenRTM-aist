@@ -250,4 +250,8 @@ namespace RTC
 #endif  
 }; // namespace RTC
 
+#ifdef __GNUC__
+extern template class coil::Singleton<coil::GlobalFactory<RTC::SdoServiceProviderBase> >;
+#endif
+
 #endif // RTC_SDOSERVICEPROVIDERBASE_H

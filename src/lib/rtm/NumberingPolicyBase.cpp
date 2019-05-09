@@ -19,6 +19,3 @@
 
 #include <rtm/NumberingPolicy.h>
 #include <coil/stringutil.h>
-
-
-
