@@ -245,6 +245,7 @@ namespace RTC_impl
 
   void RTObjectStateMachine::onDeactivated(const ExecContextStates& st)
   {
+    if (isNextState(RTC::ERROR_STATE)) { return; }
     // call Servant
     if (m_rtobjPtr != NULL)
       {
@@ -306,6 +307,7 @@ namespace RTC_impl
   // RTC::DataflowComponentAction
   void RTObjectStateMachine::onExecute(const ExecContextStates& st)
   {
+    if (isNextState(RTC::ERROR_STATE)) { return; }
     static int count;
     double max_interval, min_interval, mean_interval, stddev;
     // call Servant
@@ -366,6 +368,7 @@ namespace RTC_impl
 
   void RTObjectStateMachine::onStateUpdate(const ExecContextStates& st)
   {
+    if (isNextState(RTC::ERROR_STATE)) { return; }
     // call Servant
     if (m_rtobjPtr != NULL)
       {
