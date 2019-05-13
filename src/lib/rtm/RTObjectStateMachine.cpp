@@ -245,7 +245,6 @@ namespace RTC_impl
 
   void RTObjectStateMachine::onDeactivated(const ExecContextStates& st)
   {
-    if (isNextState(RTC::ERROR_STATE)) { return; }
     // call Servant
     if (m_rtobjPtr != NULL)
       {
