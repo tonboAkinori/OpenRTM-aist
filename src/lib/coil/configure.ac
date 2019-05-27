@@ -124,7 +124,6 @@ case $system in
 	;;	
 [Linux*)]
 	AC_DEFINE([COIL_OS_LINUX], [TRUE], [OS is Linux])
-	AC_DEFINE([_REENTRANT], [TRUE], [Multi Thread Support])
 	AC_DEFINE([COIL_PLATFORM], [POSIX], [Platform is POSIX])
 	LDFLAGS="$LDFLAGS -luuid -lrt -ldl"
 	COIL_PLATFORM=posix
