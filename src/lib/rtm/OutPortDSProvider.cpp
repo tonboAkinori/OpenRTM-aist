@@ -186,7 +186,7 @@ namespace RTC
         }
 #ifndef ORB_IS_RTORB
         data->length(len);
-        cdr.readData(static_cast<unsigned char*>(data->get_buffer()), len);
+        cdr.readData(data->get_buffer(), len);
 #else
         data->length(len);
         cdr.readData(reinterpret_cast<char *>(&((*data)[0]),

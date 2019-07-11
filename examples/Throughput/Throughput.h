@@ -414,7 +414,7 @@ class Throughput
   std::vector<std::chrono::nanoseconds> m_record;
 
   // received data store
-  size_t m_sendcount;
+  unsigned long m_sendcount;
   size_t m_logmulcnt;
   size_t m_varsize;
   // <rtc-template block="private_attribute">

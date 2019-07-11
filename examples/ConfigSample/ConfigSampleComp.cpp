@@ -49,7 +49,7 @@ void MyModuleInit(RTC::Manager* manager)
 
   RTC::ExecutionContextList_var ecs;
   ecs = rtobj->get_owned_contexts();
-  ecs[static_cast<CORBA::ULong>(0)]->activate_component(rtobj);
+  ecs[0U]->activate_component(rtobj);
 
   return;
 }

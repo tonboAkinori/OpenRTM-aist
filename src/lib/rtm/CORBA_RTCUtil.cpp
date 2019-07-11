@@ -107,7 +107,7 @@ namespace CORBA_RTCUtil
       {
         RTC::ExecutionContextList_var eclist;
         eclist = rtc->get_owned_contexts();
-        if (ec_id >= static_cast<CORBA::Long>(eclist->length()))
+        if (ec_id >= static_cast<RTC::UniqueId>(eclist->length()))
           { return RTC::ExecutionContext::_nil(); }
         if (CORBA::is_nil(eclist[static_cast<CORBA::ULong>(ec_id)]))
           { return RTC::ExecutionContext::_nil(); }

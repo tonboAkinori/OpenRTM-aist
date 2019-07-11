@@ -157,7 +157,7 @@ namespace RTC
     if (m_connector == nullptr)
       {
         ByteData cdr;
-        cdr.writeData(const_cast<unsigned char*>(data.get_buffer()), static_cast<CORBA::ULong>(data.length()));
+        cdr.writeData(data.get_buffer(), static_cast<CORBA::ULong>(data.length()));
 
         onReceiverError(cdr);
         return ::OpenRTM::PORT_ERROR;
@@ -175,7 +175,7 @@ namespace RTC
     
 
     cdr.isLittleEndian(endian_type);
-    cdr.writeData(const_cast<unsigned char*>(data.get_buffer()), static_cast<CORBA::ULong>(data.length()));
+    cdr.writeData(data.get_buffer(), static_cast<CORBA::ULong>(data.length()));
     RTC_PARANOID(("converted CDR data size: %d", cdr.getDataLength()));
 
     

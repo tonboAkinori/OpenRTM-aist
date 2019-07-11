@@ -828,7 +828,7 @@ namespace RTC
   InPortBase::createProvider(ConnectorProfile& cprof, coil::Properties& prop)
   {
     if (!prop["interface_type"].empty() &&
-        !coil::includes(coil::vstring(m_providerTypes), prop["interface_type"]))
+        !coil::includes(m_providerTypes, prop["interface_type"]))
       {
         RTC_ERROR(("no provider found"));
         RTC_DEBUG(("interface_type:  %s", prop["interface_type"].c_str()));
@@ -883,7 +883,7 @@ namespace RTC
                              coil::Properties& prop)
   {
     if (!prop["interface_type"].empty() &&
-        !coil::includes(coil::vstring(m_consumerTypes), prop["interface_type"]))
+        !coil::includes(m_consumerTypes, prop["interface_type"]))
       {
         RTC_ERROR(("no consumer found"));
         RTC_DEBUG(("interface_type:  %s", prop["interface_type"].c_str()));

@@ -80,11 +80,11 @@ namespace CORBA_IORUtil
     p += 4;
 
     cdrMemoryStream buf(static_cast<CORBA::ULong>(size), false);
-    for (int i(0); i < static_cast<int>(size); ++i)
+    for (size_t i(0); i < size; ++i)
       {
         CORBA::Octet v;
         // upper digit
-        int j(i * 2);
+        size_t j(i * 2);
         if (p[j] >= '0' && p[j] <= '9')
           {
             v = ((p[j] - '0') << 4);
@@ -102,7 +102,7 @@ namespace CORBA_IORUtil
             return false;
           }
         // lower digit
-        int k(j + 1);
+        size_t k(j + 1);
         if (p[k] >= '0' && p[k] <= '9')
           {
             v += (p[k] - '0');

@@ -251,7 +251,7 @@ RTC::ReturnCode_t Throughput::onExecute(RTC::UniqueId ec_id)
     }
   else
     {
-      if(static_cast<unsigned long>(m_sendcount) > m_maxsend)
+      if(m_sendcount > m_maxsend)
         {
           exit();
           return RTC::RTC_OK;
@@ -396,9 +396,9 @@ CORBA::ULong Throughput::getDataSize()
 
 void Throughput::receiveData(const RTC::Time &tm, const CORBA::ULong seq_length)
 {
-  static size_t size(0);
-  static size_t record_num(0);
-  static size_t record_ptr(0);
+  static unsigned long size(0);
+  static unsigned long record_num(0);
+  static unsigned long record_ptr(0);
 
   // data arrived -> getting time
   auto received_time = std::chrono::system_clock::now().time_since_epoch();
@@ -418,7 +418,7 @@ void Throughput::receiveData(const RTC::Time &tm, const CORBA::ULong seq_length)
       double max_latency(0.0), min_latency(10000.0), mean_latency(0.0);
       double variance(0.0), stddev(0.0), throughput(0.0);
       double sum(0.0), sq_sum(0.0);
-      size_t record_len = record_num > record_ptr ? m_maxsample : record_ptr;
+      unsigned long record_len = record_num > record_ptr ? m_maxsample : record_ptr;
 
 #ifdef DEBUG
       std::cout << "%%%%% record_num: " << record_num;
@@ -427,7 +427,7 @@ void Throughput::receiveData(const RTC::Time &tm, const CORBA::ULong seq_length)
       std::cout << " maxsample: " << m_maxsample << std::endl;
 #endif // DEBUG
 
-      for (size_t i(0); i < record_len; ++i)
+      for (unsigned long i(0); i < record_len; ++i)
         {
           double tmp(std::chrono::duration<double>(m_record[i]).count());
           sum += tmp;
@@ -469,7 +469,7 @@ void Throughput::receiveData(const RTC::Time &tm, const CORBA::ULong seq_length)
   m_record[record_ptr] = received_time - send_time;
   size = seq_length;
   record_ptr++; record_num++;
-  if (static_cast<unsigned long>(record_ptr) == m_maxsample) { record_ptr = 0; }
+  if (record_ptr == m_maxsample) { record_ptr = 0; }
   return;
 }
 
