@@ -150,10 +150,10 @@ namespace RTC
 
     for (auto & param : m_params)
       {
-        if (prop.hasKey(param->name) != nullptr)
+        if (prop.hasKey(param->m_name) != nullptr)
           {
             // m_changedParam is updated here
-            param->update(prop[param->name].c_str());
+            param->update(prop[param->m_name].c_str());
           }
       }
     onUpdate(config_set);

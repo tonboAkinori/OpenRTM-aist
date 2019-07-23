@@ -33,9 +33,9 @@ namespace hrtm
   }
 
   void
-  ComponentManager::set_init_proc(void(*init_proc)(hrtm::ComponentManager*))
+  ComponentManager::set_init_proc(ModuleInitProc proc)
   {
-    initProc = init_proc;
+    initProc = proc;
     setModuleInitProc(hrtm::ComponentManager::init_proc);
   }
   bool ComponentManager::activate()

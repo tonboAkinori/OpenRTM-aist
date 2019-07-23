@@ -181,7 +181,7 @@ namespace RTC
      * @endif
      */
     ConfigBase(const char* name_, const char* def_val)
-      : name(name_), default_value(def_val),
+      : m_name(name_), default_value(def_val),
         string_value(""), m_admin(nullptr), m_callback(nullptr)
     {}
 
@@ -274,7 +274,7 @@ namespace RTC
      * @brief  Configuration name
      * @endif
      */
-    const char* name;
+    const char* m_name;
 
     /*!
      * @if jp
@@ -431,11 +431,11 @@ namespace RTC
       // value changed
       if ((*m_trans)(m_var, val))
         {
-          notifyUpdate(name, val);
+          notifyUpdate(m_name, val);
           return true;
         }
       (*m_trans)(m_var, default_value);
-      notifyUpdate(name, val);
+      notifyUpdate(m_name, val);
       return false;
     }
 
@@ -1547,7 +1547,7 @@ namespace RTC
       bool operator()(ConfigBase* conf)
       {
         if (conf == nullptr) { return false; }
-        return (m_name == conf->name);
+        return (m_name == conf->m_name);
       }
     };
 

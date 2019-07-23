@@ -630,7 +630,8 @@ function(openrtm_common_set_compile_options target)
 		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},6.9.9>: -Wregister>
 		-Wreorder
 		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},5.9.9>: -Wscalar-storage-order>
-		-Wshadow
+		# Debian 8.0 support GCC 4.9 until July 2019, so We will not fix the shadow warnings for GCC 4.9.
+		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},4.9.9>: -Wshadow>
 		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},6.9.9>: -Wshadow-compatible-local>
 		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},6.9.9>: -Wshadow-local>
 		$<$<VERSION_GREATER:${CMAKE_CXX_COMPILER_VERSION},6.9.9>: -Wshadow=compatible-local>
@@ -670,7 +671,6 @@ function(openrtm_common_set_compile_options target)
 		-Wno-missing-declarations
 		-Wno-old-style-cast
 		-Wno-overloaded-virtual
-		-Wno-shadow
 		-Wno-sign-compare
 		-Wno-sign-conversion
 		-Wno-strict-overflow

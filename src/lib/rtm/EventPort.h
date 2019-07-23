@@ -120,8 +120,8 @@ namespace RTC
   {
       USE_CONNLISTENER_STATUS;
   public:
-      EventConnListener(RingBuffer<EventBase*>&buffer, CdrBufferBase* m_thebuffer) :
-          m_buffer(buffer), m_thebuffer(m_thebuffer) {}
+      EventConnListener(RingBuffer<EventBase*>&buffer, CdrBufferBase* thebuffer) :
+          m_buffer(buffer), m_thebuffer(thebuffer) {}
       ~EventConnListener() override
       {
       }

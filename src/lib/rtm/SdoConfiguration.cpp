@@ -520,8 +520,8 @@ namespace SDOPackage
     try
       {
         std::lock_guard<std::mutex> guard(m_config_mutex);
-        const char* config_id(configuration_set.id);
-        coil::Properties config(config_id);
+        const char* configset_id(configuration_set.id);
+        coil::Properties config(configset_id);
         toProperties(config, configuration_set);
         return m_configsets.addConfigurationSet(config);
       }

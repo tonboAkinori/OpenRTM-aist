@@ -39,7 +39,7 @@ namespace coil
    * @endif
    */
   Properties::Properties(const char* key, const char* value, bool set_value)
-    : name(key), value(value), default_value(""), set_value((this->value.empty()) ? set_value : true), root(nullptr), m_empty("")
+    : name(key), m_value(value), default_value(""), m_set_value((this->m_value.empty()) ? set_value : true), root(nullptr), m_empty("")
   {
     leaf.clear();
   }
@@ -52,7 +52,7 @@ namespace coil
    * @endif
    */
   Properties::Properties(std::map<std::string, std::string>& defaults)
-    : name(""), value(""), default_value(""), set_value(false), root(nullptr), m_empty("")
+    : name(""), m_value(""), default_value(""), m_set_value(false), root(nullptr), m_empty("")
   {
     leaf.clear();
     std::map<std::string, std::string>::iterator it(defaults.begin());
@@ -73,7 +73,7 @@ namespace coil
    * @endif
    */
   Properties::Properties(const char* const defaults[], long num)
-    : name(""), value(""), default_value(""), set_value(false), root(nullptr), m_empty("")
+    : name(""), m_value(""), default_value(""), m_set_value(false), root(nullptr), m_empty("")
   {
     leaf.clear();
     setDefaults(defaults, num);
@@ -87,8 +87,8 @@ namespace coil
    * @endif
    */
   Properties::Properties(const Properties& prop)
-    : name(prop.name), value(prop.value),
-      default_value(prop.default_value), set_value(prop.set_value), root(nullptr), m_empty("")
+    : name(prop.name), m_value(prop.m_value),
+      default_value(prop.default_value), m_set_value(prop.m_set_value), root(nullptr), m_empty("")
   {
     std::vector<std::string> keys;
     keys = prop.propertyNames();
@@ -98,9 +98,9 @@ namespace coil
         if ((node = prop.findNode(key)) != nullptr)
           {
             setDefault(key,  node->default_value);
-            if (node->set_value)
+            if (node->m_set_value)
               {
-                setProperty(key, node->value);
+                setProperty(key, node->m_value);
               }
           }
       }
@@ -117,9 +117,9 @@ namespace coil
   {
     clear();
     name = prop.name;
-    value = prop.value;
+    m_value = prop.m_value;
     default_value = prop.default_value;
-    set_value = prop.set_value;
+    m_set_value = prop.m_set_value;
 
     std::vector<std::string> keys;
     keys = prop.propertyNames();
@@ -129,9 +129,9 @@ namespace coil
         if (node != nullptr)
           {
             setDefault(key,  node->default_value);
-            if (node->set_value)
+            if (node->m_set_value)
               {
-                setProperty(key, node->value);
+                setProperty(key, node->m_value);
               }
           }
       }
@@ -175,7 +175,7 @@ namespace coil
     Properties* node(nullptr);
     if ((node = _getNode(keys, 0, this)) != nullptr)
       {
-        return (node->set_value) ? node->value : node->default_value;
+        return (node->m_set_value) ? node->m_value : node->default_value;
       }
     return m_empty;
   }
@@ -219,7 +219,7 @@ namespace coil
     setProperty(key, getProperty(key));
     Properties& prop(getNode(key));
 
-    return prop.value;
+    return prop.m_value;
   }
 
   /*!
@@ -266,9 +266,9 @@ namespace coil
           }
         curr = next;
       }
-    std::string retval(curr->value);
-    curr->value = invalue;
-    curr->set_value = true;
+    std::string retval(curr->m_value);
+    curr->m_value = invalue;
+    curr->m_set_value = true;
     return retval;
   }
 
@@ -765,9 +765,9 @@ namespace coil
 
     if (curr->root != nullptr)
       {
-        if (curr->set_value)
+        if (curr->m_set_value)
           {
-            out << curr_name << ": " << coil::escape(curr->value) << std::endl;
+            out << curr_name << ": " << coil::escape(curr->m_value) << std::endl;
           }
       }
   }
@@ -785,13 +785,13 @@ namespace coil
     if (index != 0) out << indent(index) << "- " << curr.name;
     if (curr.leaf.empty())
       {
-        if (!curr.set_value)
+        if (!curr.m_set_value)
           {
             out << ": " << curr.default_value << std::endl;
           }
         else
           {
-            out << ": " << curr.value << std::endl;
+            out << ": " << curr.m_value << std::endl;
           }
         return out;
       }
@@ -864,13 +864,13 @@ namespace coil
       if (index != 0) out += indent(index) + "- " + curr.name;
       if (curr.leaf.empty())
       {
-          if (!curr.set_value)
+          if (!curr.m_set_value)
           {
               out += ": " + curr.default_value + "\n";
           }
           else
           {
-              out += ": " + curr.value + "\n";
+              out += ": " + curr.m_value + "\n";
           }
           return;
       }
@@ -886,13 +886,13 @@ namespace coil
       if (index != 0) out.push_back(indent(index) + "- " + curr.name);
       if (curr.leaf.empty())
       {
-          if (!curr.set_value)
+          if (!curr.m_set_value)
           {
               out.push_back(": " + curr.default_value);
           }
           else
           {
-              out.push_back(": " + curr.value);
+              out.push_back(": " + curr.m_value);
           }
           return;
       }

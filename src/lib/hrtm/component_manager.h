@@ -67,7 +67,7 @@ namespace hrtm
     }
 
     virtual DataFlowComponent* create_component(const char* component_name);
-    virtual void set_init_proc(void(*init_proc)(hrtm::ComponentManager*));
+    virtual void set_init_proc(ModuleInitProc proc);
     virtual bool activate();
     virtual void run(bool non_block = false);
 

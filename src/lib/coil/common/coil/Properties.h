@@ -299,7 +299,7 @@ namespace coil
      *
      * @endif
      */
-    inline const char* getValue() const         {return value.c_str();}
+    inline const char* getValue() const         {return m_value.c_str();}
 
     /*!
      * @if jp
@@ -1336,9 +1336,9 @@ namespace coil
 
   private:
     std::string name;
-    std::string value;
+    std::string m_value;
     std::string default_value;
-    bool set_value;
+    bool m_set_value;
     Properties* root;
     std::vector<Properties*> leaf;
     const std::string m_empty;
