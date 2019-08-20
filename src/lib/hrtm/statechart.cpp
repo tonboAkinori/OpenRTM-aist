@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Copyright 2005 Eduard Etti
 */
 #include "hrtm/statechart.h"

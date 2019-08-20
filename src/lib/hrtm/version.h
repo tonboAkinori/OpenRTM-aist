@@ -1,4 +1,4 @@
-#ifndef HRTM_VERSION_H_
+﻿#ifndef HRTM_VERSION_H_
 #define HRTM_VERSION_H_
 /*
   Copyright 2011 Honda R&D Co.,Ltd.

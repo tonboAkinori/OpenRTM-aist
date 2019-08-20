@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file in_port.h
  * @brief RTC::InPort wrapper class for hrtm::InPort 

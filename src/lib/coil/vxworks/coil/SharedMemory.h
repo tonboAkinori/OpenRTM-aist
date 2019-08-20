@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file SharedMemory_vxworks.h
  * @brief SharedMemory class

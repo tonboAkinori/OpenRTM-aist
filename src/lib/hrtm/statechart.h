@@ -1,4 +1,4 @@
-/*
+﻿/*
  * Copyright 2005 by Eduard Hiti.
 */
 #ifndef HRTM_STATECHART_H_

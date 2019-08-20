@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file  Mutex_vxworks.cpp
  * @brief Condition variable for VxWorks

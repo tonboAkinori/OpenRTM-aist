@@ -1,4 +1,4 @@
-// -*- C++ -*-
+Ôªø// -*- C++ -*-
 /*!
  * @file  Signal_posix.cpp
  * @brief SignalAction class
@@ -25,7 +25,7 @@ namespace coil
 {
   /*!
    * @if jp
-   * @brief •≥•Û•π•»•È•Ø•ø
+   * @brief „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø
    * @else
    * @brief Constructor
    * @endif
@@ -36,9 +36,9 @@ namespace coil
 
   /*!
    * @if jp
-   * @brief •≥•Û•π•»•È•Ø•ø
-   * @param handle •∑•∞• •Î•œ•Û•…•È
-   * @param signum •∑•∞• •Î»÷πÊ
+   * @brief „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø
+   * @param handle „Ç∑„Ç∞„Éä„É´„Éè„É≥„Éâ„É©
+   * @param signum „Ç∑„Ç∞„Éä„É´Áï™Âè∑
    * @else
    * @brief Constructor
    * @param handle Signal handler.
@@ -63,7 +63,7 @@ namespace coil
 
   /*!
    * @if jp
-   * @brief •«•π•»•È•Ø•ø
+   * @brief „Éá„Çπ„Éà„É©„ÇØ„Çø
    * @else
    * @brief Destructor
    * @endif

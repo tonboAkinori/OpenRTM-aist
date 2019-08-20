@@ -1,4 +1,4 @@
-#ifndef HRTM_UTILS_H
+﻿#ifndef HRTM_UTILS_H
 #define HRTM_UTILS_H
 #include <iostream>
 using namespace std;

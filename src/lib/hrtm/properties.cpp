@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file properties.cpp
  * @brief hrtm::Peoperties wrapper class

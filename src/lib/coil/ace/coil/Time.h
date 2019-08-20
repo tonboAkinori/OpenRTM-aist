@@ -1,4 +1,4 @@
-// -*- C++ -*-
+ï»¿// -*- C++ -*-
 /*!
  * @file Time_posix.h
  * @brief Time functions
@@ -79,10 +79,10 @@ namespace coil
 
   /*!
    * @if jp
-   * @brief ‚•ª‰ğ”\ƒpƒtƒH[ƒ}ƒ“ƒXƒJƒEƒ“ƒ^‚©‚çŠÔ‚ğæ“¾‚·‚é
+   * @brief é«˜åˆ†è§£èƒ½ãƒ‘ãƒ•ã‚©ãƒ¼ãƒãƒ³ã‚¹ã‚«ã‚¦ãƒ³ã‚¿ã‹ã‚‰æ™‚é–“ã‚’å–å¾—ã™ã‚‹
    *
    *
-   * @return TimeValueƒIƒuƒWƒFƒNƒg
+   * @return TimeValueã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
    *
    * @else
    * @brief 

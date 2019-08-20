@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file data_flow_component.h
  * @brief RTC::DataFlowComponent wrapper class for hrtm::DataFlowComponent

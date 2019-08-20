@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file  Process.h
  * @brief Process handling functions
@@ -36,7 +36,7 @@ namespace coil
 
   /*!
    * @if jp
-   * @brief ¥×¥í¥»¥¹¤òµ¯Æ°¤¹¤ë
+   * @brief ツ・テ猟・テュツ・ツサツ・ツケツ、テイツオツッテーツ、ツケツ、テォ
    * @else
    * @brief Launching a process
    * @endif

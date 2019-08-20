@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file  Process.h
  * @brief Process handling functions
@@ -32,15 +32,15 @@ namespace coil
 
   /*!
    * @if jp
-   * @brief �ץ�������ư����
+   * @brief プロセスを起動する
    *
-   * �ץ�������ư���롣�����ˤϵ�ư����ե�����̾��Ϳ���롣�¹ԥե���
-   * ��ϴĶ��ѿ� PATH �����ꤵ�줿���ޥ�ɥ������ѥ��⤫�鸡�����졢��
-   * �Ĥ���Х��ޥ�ɤ���ư����롣�ץ������ε�ư����������� 0�����Ԥ�
-   * ��� -1 ���֤���
+   * プロセスを起動する。引数には起動するファイル名を与える。実行ファイ
+   * ルは環境変数 PATH に設定されたコマンドサーチパス内から検索され、見
+   * つかればコマンドが起動される。プロセスの起動が成功すれば 0、失敗す
+   * れば -1 を返す。
    *
-   * @param command ��ư����¹ԥե�����Υե�ѥ�
-   * @return 0: ����, -1: ����
+   * @param command 起動する実行ファイルのフルパス
+   * @return 0: 成功, -1: 失敗
    *
    * @else
    * @brief Launching a process
@@ -62,13 +62,13 @@ namespace coil
 
   /*!
   * @if jp
-  * @brief �ץ�������ư���ƽ��Ϥ��������
+  * @brief プロセスを起動して出力を取得する
   *
   *
   *
-  * @param cmd ��ư����¹ԥե�����Υե�ѥ�
-  * @param out ���Ϸ��
-  * @return 0: ����, -1: ����
+  * @param cmd 起動する実行ファイルのフルパス
+  * @param out 出力結果
+  * @return 0: 成功, -1: 失敗
   *
   * @else
   * @brief Launching a process

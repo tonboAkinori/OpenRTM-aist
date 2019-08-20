@@ -1,4 +1,4 @@
-// -*- C++ -*-
+Ôªø// -*- C++ -*-
 /*!
  * @file  Signal_vxworks.h
  * @brief SignalAction class
@@ -32,7 +32,7 @@ namespace coil
    * @if jp
    *
    * @class SignalAction
-   * @brief SignalAction •Ø•È•π
+   * @brief SignalAction „ÇØ„É©„Çπ
    *
    * @else
    *
@@ -47,9 +47,9 @@ namespace coil
     /*!
      * @if jp
      *
-     * @brief •≥•Û•π•»•È•Ø•ø
+     * @brief „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø
      *
-     * •≥•Û•π•»•È•Ø•ø°£
+     * „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÄÇ
      *
      * @else
      *
@@ -64,12 +64,12 @@ namespace coil
     /*!
      * @if jp
      *
-     * @brief •≥•Û•π•»•È•Ø•ø
+     * @brief „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø
      *
-     * •≥•Û•π•»•È•Ø•ø°£
+     * „Ç≥„É≥„Çπ„Éà„É©„ÇØ„Çø„ÄÇ
      *
-     * @param handle •∑•∞• •Î•œ•Û•…•È
-     * @param signum •∑•∞• •Î»÷πÊ
+     * @param handle „Ç∑„Ç∞„Éä„É´„Éè„É≥„Éâ„É©
+     * @param signum „Ç∑„Ç∞„Éä„É´Áï™Âè∑
      *
      * @else
      *
@@ -87,9 +87,9 @@ namespace coil
     /*!
      * @if jp
      *
-     * @brief •«•π•»•È•Ø•ø
+     * @brief „Éá„Çπ„Éà„É©„ÇØ„Çø
      *
-     * •«•π•»•È•Ø•ø°£
+     * „Éá„Çπ„Éà„É©„ÇØ„Çø„ÄÇ
      *
      * @else
      *

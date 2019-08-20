@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file logger.h
  * @brief RTC::Logger wrapper class for hrtm::Logger

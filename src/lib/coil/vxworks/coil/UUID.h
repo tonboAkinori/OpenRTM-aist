@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file  UUID.h
  * @brief UUID Generator for VxWorks

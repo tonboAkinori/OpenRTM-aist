@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file component_manager.h
  * @brief RTC::Manager wrapper class for hrtm::ComponentManager

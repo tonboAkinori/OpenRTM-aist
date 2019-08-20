@@ -1,4 +1,4 @@
-// -*- C++ -*-
+﻿// -*- C++ -*-
 /*!
  * @file out_port.h
  * @brief RTC::OutPort wrapper class for hrtm::OutPort 
