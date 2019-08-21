@@ -267,12 +267,12 @@ namespace RTC
    *
    * @endif
    */
-  enum ConfigurationSetNameListenerType
+  enum class ConfigurationSetNameListenerType : uint8_t
     {
-      ON_UPDATE_CONFIG_SET,
-      ON_REMOVE_CONFIG_SET,
-      ON_ACTIVATE_CONFIG_SET,
-      CONFIG_SET_NAME_LISTENER_NUM
+      ON_UPDATE,
+      ON_REMOVE,
+      ON_ACTIVATE,
+      LISTENER_NUM
     };
 
   /*!
@@ -282,9 +282,9 @@ namespace RTC
    *
    * ConfigurationSetに関するイベントに関するリスナークラス。
    *
-   * - ON_UPDATE_CONFIG_SET:
-   * - ON_REMOVE_CONFIG_SET:
-   * - ON_ACTIVATE_CONFIG_SET:
+   * - ON_UPDATE:
+   * - ON_REMOVE:
+   * - ON_ACTIVATE:
    *
    * @else
    * @class ConfigurationSetNameListener class
@@ -293,9 +293,9 @@ namespace RTC
    * This class is abstract base class for listener classes that
    * provides callbacks for various events for ConfigurationSet.
    *
-   * - ON_UPDATE_CONFIG_SET:
-   * - ON_REMOVE_CONFIG_SET:
-   * - ON_ACTIVATE_CONFIG_SET:
+   * - ON_UPDATE:
+   * - ON_REMOVE:
+   * - ON_ACTIVATE:
    *
    * @endif
    */
@@ -328,16 +328,16 @@ namespace RTC
      */
     static const char* toString(ConfigurationSetNameListenerType type)
     {
-      if (type < CONFIG_SET_NAME_LISTENER_NUM)
+      if (type < ConfigurationSetNameListenerType::LISTENER_NUM)
         {
           static const char* const typeString[] =
           {
-            "ON_UPDATE_CONFIG_SET",
-            "ON_REMOVE_CONFIG_SET",
-            "ON_ACTIVATE_CONFIG_SET",
-            "CONFIG_SET_NAME_LISTENER_NUM"
+            "ON_UPDATE",
+            "ON_REMOVE",
+            "ON_ACTIVATE",
+            "LISTENER_NUM"
           };
-          return typeString[type];
+          return typeString[static_cast<uint8_t>(type)];
         }
       return "";
     }
@@ -737,7 +737,7 @@ namespace RTC
      * @endif
      */
     ConfigurationSetNameListenerHolder
-    configsetname_[CONFIG_SET_NAME_LISTENER_NUM];
+    configsetname_[static_cast<uint8_t>(ConfigurationSetNameListenerType::LISTENER_NUM)];
   };
 
 

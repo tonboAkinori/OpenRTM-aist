@@ -1347,9 +1347,9 @@ namespace RTC
      * ConfigurationSetNameListener を追加する。設定可能なイベントは以下の
      * 3種類がある。
      *
-     * - ON_UPDATE_CONFIG_SET: ある ConfigurationSet がアップデートされた
-     * - ON_REMOVE_CONFIG_SET: ある ConfigurationSet が削除された
-     * - ON_ACTIVATE_CONFIG_SET: ある ConfigurationSet がアクティブ化された
+     * - ON_UPDATE: ある ConfigurationSet がアップデートされた
+     * - ON_REMOVE: ある ConfigurationSet が削除された
+     * - ON_ACTIVATE: ある ConfigurationSet がアクティブ化された
      *
      * @param type ConfigurationSetNameListenerType型の値。
      * @param listener ConfigurationSetNameListener 型のリスナオブジェクト。
@@ -1362,9 +1362,9 @@ namespace RTC
      * This function add a listener object which is called when
      * ConfigurationSetName is updated. Available events are the followings.
      *
-     * - ON_UPDATE_CONFIG_SET: A ConfigurationSet has been updated.
-     * - ON_REMOVE_CONFIG_SET: A ConfigurationSet has been deleted.
-     * - ON_ACTIVATE_CONFIG_SET: A ConfigurationSet has been activated.
+     * - ON_UPDATE: A ConfigurationSet has been updated.
+     * - ON_REMOVE: A ConfigurationSet has been deleted.
+     * - ON_ACTIVATE: A ConfigurationSet has been activated.
      *
      * @param type ConfigurationSetNameListenerType value
      * @param listener ConfigurationSetNameListener listener object.
@@ -1386,7 +1386,6 @@ namespace RTC
      * 削除する。
      *
      * @param type ConfigurationSetNameListenerType型の値。
-     *             ON_UPDATE_CONFIG_PARAM がある。
      * @param listener 与えたリスナオブジェクトへのポインタ
      *
      * @else
@@ -1397,7 +1396,6 @@ namespace RTC
      * addConfigurationSetNameListener() function.
      *
      * @param type ConfigurationSetNameListenerType value
-     *             ON_UPDATE_CONFIG_PARAM is only allowed.
      * @param listener a pointer to ConfigurationSetNameListener
      *             listener object.
      *
