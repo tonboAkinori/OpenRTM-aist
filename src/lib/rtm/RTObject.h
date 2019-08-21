@@ -4053,10 +4053,10 @@ namespace RTC
      *
      * update(const char* config_set, const char* config_param) が呼ばれた際に
      * コールされるリスナ ConfigurationParamListener を追加する。
-     * type には現在のところ ON_UPDATE_CONFIG_PARAM のみが入る。
+     * type には現在のところ ON_UPDATE のみが入る。
      *
      * @param type ConfigurationParamListenerType型の値。
-     *             ON_UPDATE_CONFIG_PARAM がある。
+     *             ON_UPDATE がある。
      *
      * @param listener ConfigurationParamListener 型のリスナオブジェクト。
      * @param autoclean リスナオブジェクトを自動で削除するかどうかのフラグ
@@ -4068,10 +4068,10 @@ namespace RTC
      * This function adds a listener object which is called when
      * update(const char* config_set, const char* config_param) is
      * called. In the type argument, currently only
-     * ON_UPDATE_CONFIG_PARAM is allowed.
+     * ON_UPDATE is allowed.
      *
      * @param type ConfigurationParamListenerType value
-     *             ON_UPDATE_CONFIG_PARAM is only allowed.
+     *             ON_UPDATE is only allowed.
      *
      * @param listener ConfigurationParamListener listener object.
      * @param autoclean a flag whether if the listener object autocleaned.
@@ -4121,7 +4121,7 @@ namespace RTC
      * addConfigurationParamListener で追加されたリスナオブジェクトを削除する。
      *
      * @param type ConfigurationParamListenerType型の値。
-     *             ON_UPDATE_CONFIG_PARAM がある。
+     *             ON_UPDATE がある。
      * @param listener 与えたリスナオブジェクトへのポインタ
      *
      * @else
@@ -4132,7 +4132,7 @@ namespace RTC
      * addConfigurationParamListener() function.
      *
      * @param type ConfigurationParamListenerType value
-     *             ON_UPDATE_CONFIG_PARAM is only allowed.
+     *             ON_UPDATE is only allowed.
      * @param listener a pointer to ConfigurationParamListener listener object.
      *
      * @endif

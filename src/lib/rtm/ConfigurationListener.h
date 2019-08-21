@@ -32,19 +32,19 @@ namespace RTC
    * @if jp
    * @brief ConfigurationParamListener のタイプ
    *
-   * - ON_UPDATE_CONFIG_PARAM: パラメータが変更された
+   * - ON_UPDATE: パラメータが変更された
    *
    * @else
    * @brief The types of ConnectorDataListener
    *
-   * - ON_UPDATE_CONFIG_PARAM,
+   * - ON_UPDATE,
    *
    * @endif
    */
-  enum ConfigurationParamListenerType
+  enum class ConfigurationParamListenerType : uint8_t
     {
-      ON_UPDATE_CONFIG_PARAM,
-      CONFIG_PARAM_LISTENER_NUM
+      ON_UPDATE,
+      LISTENER_NUM
     };
 
 
@@ -56,7 +56,7 @@ namespace RTC
    * Configuration パラメータの変更に関するリスナクラス。
    * 以下のイベントに対してコールバックされる。
    *
-   * - ON_UPDATE_CONFIG_PARAM
+   * - ON_UPDATE
    *
    * @else
    * @class ConfigurationParamListener class
@@ -66,7 +66,7 @@ namespace RTC
    * provides callbacks for various events for Configuration parameter.
    * The listener will be called on the following event.
    *
-   * - ON_UPDATE_CONFIG_PARAM
+   * - ON_UPDATE
    *
    * @endif
    */
@@ -98,14 +98,14 @@ namespace RTC
      */
     static const char* toString(ConfigurationParamListenerType type)
     {
-      if (type < CONFIG_PARAM_LISTENER_NUM)
+      if (type < ConfigurationParamListenerType::LISTENER_NUM)
         {
           static const char* const typeString[] =
           {
-            "ON_UPDATE_CONFIG_PARAM",
-            "CONFIG_PARAM_LISTENER_NUM"
+            "ON_UPDATE",
+            "LISTENER_NUM"
           };
-          return typeString[type];
+          return typeString[static_cast<uint8_t>(type)];
         }
       return "";
     }
@@ -715,7 +715,7 @@ namespace RTC
      * @endif
      */
     ConfigurationParamListenerHolder
-    configparam_[CONFIG_PARAM_LISTENER_NUM];
+    configparam_[static_cast<uint8_t>(ConfigurationParamListenerType::LISTENER_NUM)];
     /*!
      * @if jp
      * @brief ConfigurationSetTypeリスナ配列
