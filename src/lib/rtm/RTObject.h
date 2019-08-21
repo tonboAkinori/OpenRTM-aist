@@ -4149,9 +4149,9 @@ namespace RTC
      * ConfigurationSetListener を追加する。設定可能なイベントは以下の
      * 2種類がある。
      *
-     * - ON_SET_CONFIG_SET: setConfigurationSetValues() で
+     * - ON_SET: setConfigurationSetValues() で
      *                      ConfigurationSet に値が設定された場合。
-     * - ON_ADD_CONFIG_SET: addConfigurationSet() で新しい
+     * - ON_ADD: addConfigurationSet() で新しい
      *                      ConfigurationSet が追加された場合。
      *
      * @param type ConfigurationSetListenerType型の値。

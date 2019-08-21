@@ -144,23 +144,23 @@ namespace RTC
    * @if jp
    * @brief ConfigurationSetListener のタイプ
    *
-   * - ON_SET_CONFIG_SET: ConfigurationSet 単位で値がセットされた
-   * - ON_ADD_CONFIG_SET: ConfigurationSet が追加された
+   * - ON_SET: ConfigurationSet 単位で値がセットされた
+   * - ON_ADD: ConfigurationSet が追加された
    *
    * @else
    * @brief The types of ConfigurationSetListener
    *
-   * - ON_SET_CONFIG_SET: Value list has been set as a configuration set
-   * - ON_ADD_CONFIG_SET: A new configuration set has been added
+   * - ON_SET: Value list has been set as a configuration set
+   * - ON_ADD: A new configuration set has been added
    *
    * @endif
    */
 
-  enum ConfigurationSetListenerType
+  enum class ConfigurationSetListenerType : uint8_t
     {
-      ON_SET_CONFIG_SET,
-      ON_ADD_CONFIG_SET,
-      CONFIG_SET_LISTENER_NUM
+      ON_SET,
+      ON_ADD,
+      LISTENER_NUM
     };
 
   /*!
@@ -171,8 +171,8 @@ namespace RTC
    * Configurationセットが変更されたり追加された場合に呼び出されるリスナクラス。
    * 以下のConfigurationセットに関連するイベントに対するリスナ。
    *
-   * - ON_SET_CONFIG_SET: ConfigurationSet 単位で値がセットされた
-   * - ON_ADD_CONFIG_SET: ConfigurationSet が追加された
+   * - ON_SET: ConfigurationSet 単位で値がセットされた
+   * - ON_ADD: ConfigurationSet が追加された
    *
    * @else
    * @class ConfigurationSetListener class
@@ -181,8 +181,8 @@ namespace RTC
    * This class is abstract base class for listener classes that
    * provides callbacks for configuration set's related events.
    *
-   * - ON_SET_CONFIG_SET: Value list has been set as a configuration set
-   * - ON_ADD_CONFIG_SET: A new configuration set has been added
+   * - ON_SET: Value list has been set as a configuration set
+   * - ON_ADD: A new configuration set has been added
    *
    * @endif
    */
@@ -215,15 +215,15 @@ namespace RTC
      */
     static const char* toString(ConfigurationSetListenerType type)
     {
-      if (type < CONFIG_SET_LISTENER_NUM)
+      if (type < ConfigurationSetListenerType::LISTENER_NUM)
         {
           static const char* const typeString[] =
           {
-            "ON_SET_CONFIG_SET",
-            "ON_ADD_CONFIG_SET",
-            "CONFIG_SET_LISTENER_NUM"
+            "ON_SET",
+            "ON_ADD",
+            "LISTENER_NUM"
           };
-          return typeString[type];
+          return typeString[static_cast<uint8_t>(type)];
         }
       return "";
     }
@@ -726,7 +726,7 @@ namespace RTC
      * @endif
      */
     ConfigurationSetListenerHolder
-    configset_[CONFIG_SET_LISTENER_NUM];
+    configset_[static_cast<uint8_t>(ConfigurationSetListenerType::LISTENER_NUM)];
     /*!
      * @if jp
      * @brief ConfigurationSetNameListenerTypeリスナ配列
