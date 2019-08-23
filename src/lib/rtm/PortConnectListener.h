@@ -158,7 +158,7 @@ namespace RTC
    *
    * @endif
    */
-  enum PortConnectRetListenerType
+  enum class PortConnectRetListenerType : uint8_t
     {
       ON_PUBLISH_INTERFACES,
       ON_CONNECT_NEXTPORT,
@@ -522,7 +522,7 @@ namespace RTC
      * @endif
      */
     PortConnectRetListenerHolder
-    portconnret_[PORT_CONNECT_RET_LISTENER_NUM];
+    portconnret_[static_cast<uint8_t>(PortConnectRetListenerType::PORT_CONNECT_RET_LISTENER_NUM)];
   };
 
 

@@ -1996,9 +1996,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_PUBLISH_INTERFACES].notify(portname,
-                                                       profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_PUBLISH_INTERFACES);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 
@@ -2008,9 +2007,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_CONNECT_NEXTPORT].notify(portname,
-                                                     profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_CONNECT_NEXTPORT);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 
@@ -2020,9 +2018,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_SUBSCRIBE_INTERFACES].notify(portname,
-                                                         profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_SUBSCRIBE_INTERFACES);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 
@@ -2032,8 +2029,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_CONNECTED].notify(portname, profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_CONNECTED);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 
@@ -2043,8 +2040,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_DISCONNECT_NEXT].notify(portname, profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_DISCONNECT_NEXT);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 
@@ -2054,8 +2051,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnret_[ON_DISCONNECTED].notify(portname, profile, ret);
+          uint8_t i = static_cast<uint8_t>(PortConnectRetListenerType::ON_DISCONNECTED);
+          m_portconnListeners->portconnret_[i].notify(portname, profile, ret);
         }
     }
 

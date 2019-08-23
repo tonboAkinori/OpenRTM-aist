@@ -73,9 +73,9 @@ namespace RTC
         "ON_DISCONNECTED",
         ""
       };
-    type = type < PORT_CONNECT_RET_LISTENER_NUM ?
-      type : PORT_CONNECT_RET_LISTENER_NUM;
-      return typeString[type];
+    type = type < PortConnectRetListenerType::PORT_CONNECT_RET_LISTENER_NUM ?
+                  type : PortConnectRetListenerType::PORT_CONNECT_RET_LISTENER_NUM;
+    return typeString[static_cast<uint8_t>(type)];
   }
 
   /*!
