@@ -2337,7 +2337,7 @@ namespace RTC
                          bool autoclean)
   {
     m_portconnListeners.
-      portconnect_[listener_type].addListener(listener, autoclean);
+      portconnect_[static_cast<uint8_t>(listener_type)].addListener(listener, autoclean);
   }
 
   /*!
@@ -2352,7 +2352,7 @@ namespace RTC
                             PortConnectListener* listener)
   {
     m_portconnListeners.
-      portconnect_[listener_type].removeListener(listener);
+      portconnect_[static_cast<uint8_t>(listener_type)].removeListener(listener);
   }
 
   /*!

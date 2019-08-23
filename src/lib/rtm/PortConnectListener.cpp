@@ -39,8 +39,9 @@ namespace RTC
         "ON_UNSUBSCRIBE_INTERFACES",
         ""
       };
-    type = type < PORT_CONNECT_LISTENER_NUM ? type : PORT_CONNECT_LISTENER_NUM;
-    return typeString[type];
+    type = type < PortConnectListenerType::PORT_CONNECT_LISTENER_NUM ?
+                  type : PortConnectListenerType::PORT_CONNECT_LISTENER_NUM;
+    return typeString[static_cast<uint8_t>(type)];
   }
 
   /*!

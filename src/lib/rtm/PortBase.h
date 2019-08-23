@@ -1966,8 +1966,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnect_[ON_NOTIFY_CONNECT].notify(portname, profile);
+          uint8_t i = static_cast<uint8_t>(PortConnectListenerType::ON_NOTIFY_CONNECT);
+          m_portconnListeners->portconnect_[i].notify(portname, profile);
         }
     }
 
@@ -1976,8 +1976,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnect_[ON_NOTIFY_DISCONNECT].notify(portname, profile);
+          uint8_t i = static_cast<uint8_t>(PortConnectListenerType::ON_NOTIFY_DISCONNECT);
+          m_portconnListeners->portconnect_[i].notify(portname, profile);
         }
     }
     inline void onUnsubscribeInterfaces(const char* portname,
@@ -1985,8 +1985,8 @@ namespace RTC
     {
       if (m_portconnListeners != nullptr)
         {
-          m_portconnListeners->
-            portconnect_[ON_UNSUBSCRIBE_INTERFACES].notify(portname, profile);
+          uint8_t i = static_cast<uint8_t>(PortConnectListenerType::ON_UNSUBSCRIBE_INTERFACES);
+          m_portconnListeners->portconnect_[i].notify(portname, profile);
         }
     }
 

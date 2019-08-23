@@ -46,7 +46,7 @@ namespace RTC
    *
    * @endif
    */
-  enum PortConnectListenerType
+  enum class PortConnectListenerType : uint8_t
     {
       ON_NOTIFY_CONNECT,
       ON_NOTIFY_DISCONNECT,
@@ -511,7 +511,7 @@ namespace RTC
      * @endif
      */
     PortConnectListenerHolder
-    portconnect_[PORT_CONNECT_LISTENER_NUM];
+    portconnect_[static_cast<uint8_t>(PortConnectListenerType::PORT_CONNECT_LISTENER_NUM)];
     /*!
      * @if jp
      * @brief PortConnectRetTypeリスナ配列
