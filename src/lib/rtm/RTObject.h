@@ -4854,62 +4854,74 @@ namespace RTC
 
     inline void preOnInitialize(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_INITIALIZE].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_INITIALIZE);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnFinalize(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_FINALIZE].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_FINALIZE);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnStartup(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_STARTUP].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_STARTUP);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnShutdown(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_SHUTDOWN].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_SHUTDOWN);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnActivated(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_ACTIVATED].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_ACTIVATED);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnDeactivated(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_DEACTIVATED].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_DEACTIVATED);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnAborting(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_ABORTING].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_ABORTING);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnError(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_ERROR].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_ERROR);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnReset(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_RESET].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_RESET);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnExecute(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_EXECUTE].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_EXECUTE);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnStateUpdate(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_STATE_UPDATE].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_STATE_UPDATE);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void preOnRateChanged(UniqueId ec_id)
     {
-      m_actionListeners.preaction_[PRE_ON_RATE_CHANGED].notify(ec_id);
+      uint8_t i = static_cast<uint8_t>(PreCompActionListenerType::PRE_ON_RATE_CHANGED);
+      m_actionListeners.preaction_[i].notify(ec_id);
     }
 
     inline void postOnInitialize(UniqueId ec_id, ReturnCode_t ret)

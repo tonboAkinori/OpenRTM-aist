@@ -50,12 +50,12 @@ namespace RTC
    * - PRE_ON_RATE_CHANGED:  onRateChanged 直前
    *
    * @else
-   * @brief The types of ConnectorDataListener
+   * @brief The types of PreComponentActionListener
    *
    * @endif
    */
 
-  enum PreComponentActionListenerType
+  enum class PreComponentActionListenerType : uint8_t
     {
       PRE_ON_INITIALIZE,
       PRE_ON_FINALIZE,
@@ -146,7 +146,7 @@ namespace RTC
      */
     static const char* toString(PreComponentActionListenerType type)
     {
-      if (type < PRE_COMPONENT_ACTION_LISTENER_NUM)
+      if (type < PreComponentActionListenerType::PRE_COMPONENT_ACTION_LISTENER_NUM)
         {
       static const char* const typeString[] =
         {
@@ -164,7 +164,7 @@ namespace RTC
           "PRE_ON_RATE_CHANGED",
           "PRE_COMPONENT_ACTION_LISTENER_NUM"
         };
-                return typeString[type];
+      return typeString[static_cast<uint8_t>(type)];
         }
       return "";
     }
@@ -1050,7 +1050,7 @@ namespace RTC
      * @endif
      */
     PreComponentActionListenerHolder
-    preaction_[PRE_COMPONENT_ACTION_LISTENER_NUM];
+    preaction_[static_cast<uint8_t>(PreComponentActionListenerType::PRE_COMPONENT_ACTION_LISTENER_NUM)];
     /*!
      * @if jp
      * @brief PostComponentActionTypeリスナ配列
