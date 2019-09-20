@@ -216,11 +216,11 @@ namespace RTC
    * - POST_ON_RATE_CHANGED:
    *
    * @else
-   * @brief The types of ConnectorDataListener
+   * @brief The types of PostCompoenntActionListener
    *
    * @endif
    */
-  enum PostComponentActionListenerType
+  enum class PostComponentActionListenerType : uint8_t
     {
       POST_ON_INITIALIZE,
       POST_ON_FINALIZE,
@@ -312,7 +312,7 @@ namespace RTC
      */
     static const char* toString(PostComponentActionListenerType type)
     {
-      if (type < POST_COMPONENT_ACTION_LISTENER_NUM)
+      if (type < PostComponentActionListenerType::POST_COMPONENT_ACTION_LISTENER_NUM)
         {
       static const char* const typeString[] =
         {
@@ -330,7 +330,7 @@ namespace RTC
           "POST_ON_RATE_CHANGED",
           "POST_COMPONENT_ACTION_LISTENER_NUM"
         };
-          return typeString[type];
+      return typeString[static_cast<uint8_t>(type)];
         }
       return "";
     }
@@ -1061,7 +1061,7 @@ namespace RTC
      * @endif
      */
     PostComponentActionListenerHolder
-    postaction_[POST_COMPONENT_ACTION_LISTENER_NUM];
+    postaction_[static_cast<uint8_t>(PostComponentActionListenerType::POST_COMPONENT_ACTION_LISTENER_NUM)];
     /*!
      * @if jp
      * @brief PortActionTypeリスナ配列

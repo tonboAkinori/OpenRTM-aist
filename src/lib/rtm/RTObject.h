@@ -4926,62 +4926,74 @@ namespace RTC
 
     inline void postOnInitialize(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_INITIALIZE].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_INITIALIZE);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnFinalize(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_FINALIZE].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_FINALIZE);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnStartup(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_STARTUP].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_STARTUP);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnShutdown(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_SHUTDOWN].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_SHUTDOWN);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnActivated(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_ACTIVATED].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_ACTIVATED);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnDeactivated(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_DEACTIVATED].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_DEACTIVATED);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnAborting(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_ABORTING].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_ABORTING);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnError(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_ERROR].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_ERROR);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnReset(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_RESET].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_RESET);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnExecute(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_EXECUTE].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_EXECUTE);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnStateUpdate(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_STATE_UPDATE].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_STATE_UPDATE);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void postOnRateChanged(UniqueId ec_id, ReturnCode_t ret)
     {
-      m_actionListeners.postaction_[POST_ON_RATE_CHANGED].notify(ec_id, ret);
+      uint8_t i = static_cast<uint8_t>(PostComponentActionListenerType::POST_ON_RATE_CHANGED);
+      m_actionListeners.postaction_[i].notify(ec_id, ret);
     }
 
     inline void onAddPort(const PortProfile& pprof)

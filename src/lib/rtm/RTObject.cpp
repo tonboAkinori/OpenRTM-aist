@@ -2229,7 +2229,7 @@ namespace RTC
                                  bool autoclean)
   {
     m_actionListeners.
-      postaction_[listener_type].addListener(listener, autoclean);
+      postaction_[static_cast<uint8_t>(listener_type)].addListener(listener, autoclean);
   }
 
 
@@ -2248,7 +2248,7 @@ namespace RTC
                                 PostComponentActionListener* listener)
   {
     m_actionListeners.
-      postaction_[listener_type].removeListener(listener);
+      postaction_[static_cast<uint8_t>(listener_type)].removeListener(listener);
   }
 
   /*!
